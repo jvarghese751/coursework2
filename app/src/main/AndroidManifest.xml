@@ -13,7 +13,16 @@
         android:theme="@style/Theme.SportsLeagueApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".SearchClubsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchByLeagueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchClubByLeagueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

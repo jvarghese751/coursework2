@@ -1,27 +1,25 @@
 package com.example.sportsleagueapp;
 
+import android.content.Context;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import android.content.Context;
+
+import com.example.sportsleagueapp.dao.LeagueDao;
+import com.example.sportsleagueapp.model.League;
 
 @Database(entities = {League.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
+    private static AppDatabase INSTANCE;
 
     public abstract LeagueDao leagueDao();
 
-    private static AppDatabase INSTANCE;
-
-    public static AppDatabase getDatabase(Context context) {
+    public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
-            synchronized (AppDatabase.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    AppDatabase.class, "league_database")
-                            .fallbackToDestructiveMigration()  // Automatically handle migrations
-                            .build();
-                }
-            }
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                            AppDatabase.class, "football-db")
+                    .build();
         }
         return INSTANCE;
     }

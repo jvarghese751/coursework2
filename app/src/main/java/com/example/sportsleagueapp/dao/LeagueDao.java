@@ -1,23 +1,19 @@
-package com.example.sportsleagueapp;
+package com.example.sportsleagueapp.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.sportsleagueapp.model.League;
 
 import java.util.List;
 
 @Dao
 public interface LeagueDao {
 
-    // Insert a single league
     @Insert
-    void insert(League league);
+    void insertLeagues(List<League> leagues);
 
-    // Insert multiple leagues in a batch
-    @Insert
-    void insertAll(List<League> leagues);
-
-    // Query all leagues
     @Query("SELECT * FROM leagues")
     List<League> getAllLeagues();
 }
